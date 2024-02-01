@@ -64,17 +64,18 @@ const btnNo = () => {
 
 const btnSetNote = () => {
     const data = setNote();
-    if (data.noteTitle === '') {
-        overlay.style.display = 'block';
-        errTitle.style.display = 'block';
-    }
-    else {
-        console.log(checkData(data));
-        if (checkData(data)) {
-            setData(data);
-            location.reload();
+    if (data) {
+        if (data.noteTitle === '') {
+            overlay.style.display = 'block';
+            errTitle.style.display = 'block';
         }
-        clearData();
+        else {
+            if (checkData(data)) {
+                setData(data);
+                location.reload();
+            }
+            clearData();
+        }
     }
 }
 
@@ -182,22 +183,26 @@ const btnEditClose = () => {
 
 const btnSave = () => {
     const dataId = localStorage.getItem('currentNote');
-
-    if (editNoteTitle.innerText === '') {
+    const eContent = editNoteTitle.innerText;
+    if (eContent === '') {
         overlay.style.display = 'block';
         errTitle.style.display = 'block';
+        return null;
     }
-    else {
-        const note = {
-            noteTitle: editNoteTitle.innerText,
-            contents: editContent.value.replace(/\n/g, "<br>"),
-            id: createId(),
-            date: getDate(),
-        }
+    if (listNotes.has(eContent)) {
+        overlay.style.display = 'block';
+        errBox.style.display = 'block';
+        return null;
+    }
+    const note = {
+        noteTitle: editNoteTitle.innerText,
+        contents: editContent.value.replace(/\n/g, "<br>"),
+        id: createId(),
+        date: getDate(),
+    }
 
-        const data = JSON.stringify(note);
-        localStorage.setItem(dataId, data);
-        location.reload();
-    }
+    const data = JSON.stringify(note);
+    localStorage.setItem(dataId, data);
+    location.reload();
+
 }
-

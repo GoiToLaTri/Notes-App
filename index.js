@@ -23,11 +23,13 @@ const createId = () => {
 }
 
 const setNote = () => {
+    // Kiểm tra có tiêu đề bị trùng không
     const noteTitleText = noteTitle.innerText;
     if (listNotes.has(noteTitleText)) {
         // Trả về null hoặc thông báo lỗi
         overlay.style.display = 'block';
         errBox.style.display = 'block';
+        console.log(listNotes);
         return null;
     }
 
@@ -64,6 +66,7 @@ const getData = (data) => {
     return convetData;
 }
 
+// Map này để lưu title của node để node không bị trùng.
 const listNotes = new Map();
 
 const newNote = () => {
