@@ -93,6 +93,10 @@ document.addEventListener('DOMContentLoaded', () => {
     checkDarkMode.checked = savedDarkMode === 'true';
 
     // Áp dụng giao diện tương ứng dựa trên trạng thái đã lưu
+    if (checkDarkMode.checked)
+        icoDarkLight.src = './icon/brightness-high.svg';
+    else
+        icoDarkLight.src = './icon/moon.svg';
     applyDarkMode(checkDarkMode.checked);
 });
 
