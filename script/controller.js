@@ -23,6 +23,9 @@ const showPopup = (data) => {
     currentDateTime.innerHTML = dt.noteDate;
     currentContent.innerHTML = dt.noteContent;
 
+    // Set id hiện tại cho popup edit
+    localStorage.setItem('currentNote', dt.noteId);
+
     if (btnRemove())
         currentNoteId = dt.noteId;
 }
@@ -31,7 +34,6 @@ const addNotePopup = () => {
     addNote.style.display = 'block';
     timeCreate.innerHTML = `${getDate().stringDate} &emsp; &emsp; ${getDate().time}`;
     remove.checked = false;
-    // console.log(btnRemove());
 }
 
 const btnClose = () => {
@@ -118,6 +120,8 @@ const applyDarkMode = () => {
     lightMode.classList.toggle('bg-dark', checkDarkMode.checked);
     contents.classList.toggle('bg-dark', checkDarkMode.checked);
     contents.classList.toggle('text-light', checkDarkMode.checked);
+    editContent.classList.toggle('bg-dark', checkDarkMode.checked);
+    editContent.classList.toggle('text-light', checkDarkMode.checked);
     for (let i = 0; i < darkMode.length; i++) {
         darkMode[i].classList.toggle('bg-dark', checkDarkMode.checked);
         darkMode[i].classList.toggle('border', checkDarkMode.checked);
@@ -159,5 +163,41 @@ const btnDarkMode = () => {
     else
         icoDarkLight.src = './icon/moon.svg';
     localStorage.setItem('darkLight', isDarkMode);
+}
+
+const editNote = document.getElementById('editNote');
+
+const btnEdit = () => {
+    btnClose();
+    // overlay.style.display = 'block';
+    editNote.style.display = 'block';
+    getContentEdit();
+    // console.log('Hello');
+}
+
+const btnEditClose = () => {
+    overlay.style.display = 'none';
+    editNote.style.display = 'none';
+}
+
+const btnSave = () => {
+    const dataId = localStorage.getItem('currentNote');
+
+    if (editNoteTitle.innerText === '') {
+        overlay.style.display = 'block';
+        errTitle.style.display = 'block';
+    }
+    else {
+        const note = {
+            noteTitle: editNoteTitle.innerText,
+            contents: editContent.value.replace(/\n/g, "<br>"),
+            id: createId(),
+            date: getDate(),
+        }
+
+        const data = JSON.stringify(note);
+        localStorage.setItem(dataId, data);
+        location.reload();
+    }
 }
 

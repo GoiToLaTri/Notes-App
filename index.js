@@ -68,8 +68,8 @@ const listNotes = new Map();
 
 const newNote = () => {
     const listId = getData('id');
-    listId.reverse();// Để ghi chú mới nhất lên đầu.
     if (listId) {
+        listId.reverse();// Để ghi chú mới nhất lên đầu.
         listId.forEach(element => {
             const data = getData(element);
             if (data && !listNotes.has(data.noteTitle)) {

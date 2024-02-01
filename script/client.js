@@ -5,6 +5,8 @@ const timeCreate = document.getElementById('timeCreate');
 const noteTitle = document.getElementById('noteTitle');
 const chooseBox = document.getElementById('chooseBox');
 const currentTime = document.getElementById('currentTime');
+const editNoteTitle = document.getElementById('editNoteTitle');
+const editContent = document.getElementById('editContent');
 
 const createNoteCard = () => {
     // Xóa nội dung cũ
@@ -105,6 +107,22 @@ const choiceBox = () => {
     overlay.style.display = 'block';
     popupNote.style.display = 'none';
     chooseBox.style.display = 'block';
+}
+
+const formatEditData = (data) => {
+    var tempText = data.replace(/<br\s*\/?>/gi, '\n');
+    var cleanedText = tempText.replace(/<br\s*\/?>/gi, '');
+    return cleanedText;
+}
+
+const timeEditCreate = document.getElementById('timeEditCreate');
+
+const getContentEdit = () => {
+    const dataId = localStorage.getItem('currentNote');
+    const data = getData(dataId);
+    editNoteTitle.innerHTML = data.noteTitle;
+    timeEditCreate.innerHTML = `${getDate().stringDate} &emsp; &emsp; ${getDate().time}`;
+    editContent.value = formatEditData(data.contents);
 }
 
 createNoteCard();
