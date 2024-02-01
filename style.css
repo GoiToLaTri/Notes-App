@@ -43,12 +43,16 @@ input[type=search] {
     background-color: rgba(0, 0, 0, 0.5);
 }
 
-.btnRemove{
+.btnRemove {
     cursor: pointer;
 }
 
-#chooseBox{
+#chooseBox {
     display: none;
+}
+
+.icoDarkLight {
+    cursor: pointer;
 }
 
 /* width */

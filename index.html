@@ -12,7 +12,7 @@
 </head>
 
 <body>
-    <div class="w-100 h-100 d-flex justify-content-center align-items-center">
+    <div class="w-100 h-100 d-flex justify-content-center align-items-center" id="lightMode">
         <div class="card w-100 h-75 p-4" style=" max-width: 960px;">
             <div class="border-bottom d-flex flex-column gap-4">
                 <h2 class="card-title text-center">
@@ -38,17 +38,21 @@
                         <label for="remove" class="btnRemove">
                             <img src="./icon/trash.svg" id="icoRemove">
                         </label>
+                        <input class="d-none" type="checkbox" name="darkMode" id="darkMode" onclick="btnDarkMode()">
+                        <label for="darkMode" class="icoDarkLight"><img src="./icon/brightness-high.svg" alt=""
+                                id="icoDarkLight">
+                            </label>
                     </div>
                 </div>
             </div>
             <div class="overflow-y-scroll h-100 p-4 d-flex flex-wrap gap-4" id="listNotes"></div>
-            <div class="position-absolute bottom-0 w-100 text-center text-muted">
+            <div class="copyright position-absolute bottom-0 w-100 text-center text-muted">
                 Copyright &copy; Gọi Tớ Là Trí
             </div>
         </div>
 
         <div id="popupNote" class="card shadow-lg position-absolute w-100 h-75" style="max-width: 1000px;">
-            <div class="card-body d-flex flex-column h-100 gap-4">
+            <div class="d-flex flex-column h-100 gap-4 p-4">
                 <h5 class="card-title text-center" id="currentTitle"></h5>
                 <div>
                     <h6 class="card-subtitle text-muted text-center" id="currentDateTime"></h6>
@@ -60,13 +64,13 @@
                 </div>
             </div>
             <div id="noteId"></div>
-            <div class="position-absolute bottom-0 w-100 text-center text-muted">
+            <div class="copyright position-absolute bottom-0 w-100 text-center text-muted">
                 Copyright &copy; Gọi Tớ Là Trí
             </div>
         </div>
 
-        <div id="addNote" class="card shadow-lg position-absolute w-100 h-75 py-2 px-4" style="max-width: 1000px;">
-            <div class="card-body d-flex flex-column h-100 gap-3">
+        <div id="addNote" class="card shadow-lg position-absolute w-100 h-75" style="max-width: 960px;">
+            <div class="p-4 d-flex flex-column h-100 gap-3">
                 <h4 class="card-title text-center">Add notes</h4>
                 <div id="addContent" class="d-flex flex-column w-100 border-bottom">
                     <h5 contenteditable="true" class="subtitle card-subtitle mb-2" id="noteTitle">
@@ -75,15 +79,15 @@
                 </div>
                 <h6 class="card-subtitle text-muted" id="timeCreate"></h6>
                 <div class="h-100">
-                    <textarea name="content" id="content" class="w-100 h-100 border border-0"
-                        style="outline: none;"></textarea>
+                    <textarea name="content" id="content" class="w-100 h-100 border border-0" style="outline: none;"
+                        placeholder="Enter your text here..."></textarea>
                 </div>
                 <div class="d-flex justify-content-between px-5">
                     <button type="button" class="btn btn-primary px-5" onclick="btnSetNote()">Add</button>
                     <button type="button" class="btn btn-primary px-5" onclick="btnClose()">Close</button>
                 </div>
             </div>
-            <div class="position-absolute bottom-0 w-100 text-center text-muted">
+            <div class="copyright position-absolute bottom-0 w-100 text-center text-muted">
                 Copyright &copy; Gọi Tớ Là Trí
             </div>
         </div>
