@@ -41,7 +41,7 @@
                         <input class="d-none" type="checkbox" name="darkMode" id="darkMode" onclick="btnDarkMode()">
                         <label for="darkMode" class="icoDarkLight"><img src="./icon/brightness-high.svg" alt=""
                                 id="icoDarkLight">
-                            </label>
+                        </label>
                     </div>
                 </div>
             </div>
@@ -124,6 +124,23 @@
                 <div>
                     <button class="btn btn-primary" onclick="btnYes()">Yes</button>
                     <button class="btn btn-primary" onclick="btnNo()">No</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="errTitle" class="card shadow-lg position-fixed w-100 h-100 z-3"
+            style="max-width: 240px; max-height: 160px;">
+            <div class="card-body d-flex flex-column align-items-center justify-content-center gap-2 h-100">
+                <div class="h-75 d-flex justify-content-center align-items-center gap-2">
+                    <svg width="27" height="27" fill="red" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M22 12a10 10 0 1 1-20 0 10 10 0 0 1 20 0ZM12 7a1.131 1.131 0 0 0-1.125 1.244l.438 4.383a.69.69 0 0 0 1.374 0l.438-4.383A1.131 1.131 0 0 0 12 7Zm.002 7.5a1.25 1.25 0 1 0 0 2.5 1.25 1.25 0 0 0 0-2.5Z">
+                        </path>
+                    </svg>
+                    <h6 class="card-subtitle text-muted m-0">Title is empty!</h6>
+                </div>
+                <div>
+                    <button class="btn btn-primary" onclick="btnCloseErrTitle()">Close</button>
                 </div>
             </div>
         </div>

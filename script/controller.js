@@ -15,6 +15,8 @@ const search = document.getElementById('search');
 const hoverNote = document.getElementsByClassName('card-body');
 let icoDarkLight = document.getElementById('icoDarkLight');
 
+const errTitle = document.getElementById('errTitle');
+
 const showPopup = (data) => {
     const dt = getNote(data);
     currentTitle.innerHTML = dt.noteTitle
@@ -35,6 +37,7 @@ const addNotePopup = () => {
 const btnClose = () => {
     popupNote.style.display = 'none';
     addNote.style.display = 'none';
+    clearData();
 
 }
 
@@ -59,17 +62,23 @@ const btnNo = () => {
 
 const btnSetNote = () => {
     const data = setNote();
-    console.log(checkData(data));
-    if (checkData(data)) {
-        setData(data);
-        location.reload();
+    if (data.noteTitle === '') {
+        overlay.style.display = 'block';
+        errTitle.style.display = 'block';
     }
-    clearData();
+    else {
+        console.log(checkData(data));
+        if (checkData(data)) {
+            setData(data);
+            location.reload();
+        }
+        clearData();
+    }
 }
 
 const clearData = () => {
     noteTitle.innerHTML = 'Enter Title';
-    content.value = '';
+    contents.value = '';
 }
 
 const checkData = (data) => {
@@ -85,6 +94,11 @@ const btnRemove = () => {
     else
         icoRemove.src = './icon/trash-active.svg';
     return remove.checked;
+}
+
+const btnCloseErrTitle = () => {
+    overlay.style.display = 'none';
+    errTitle.style.display = 'none';
 }
 
 document.addEventListener('DOMContentLoaded', () => {
