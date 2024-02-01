@@ -132,7 +132,7 @@ const applyDarkMode = () => {
 
     for (let i = 0; i < darkTitle.length; i++) {
         darkTitle[i].classList.remove('text-muted');
-        darkTitle[i].classList.toggle('text-secondary', checkDarkMode.checked);
+        darkTitle[i].classList.toggle('text-light', checkDarkMode.checked);
     }
 
     for (let i = 0; i < Copyright.length; i++) {

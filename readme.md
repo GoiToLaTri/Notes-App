@@ -8,3 +8,4 @@
 - Xong chức năng edit.
 - Cập nhật tối ưu hóa giao diện.
 - Còn 1 chức năng search.
+- Cập nhật tối ưu hóa giao diện lần 2.
