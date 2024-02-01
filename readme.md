@@ -1,0 +1,1 @@
+Còn 2 chức năng edit và search
