@@ -30,6 +30,11 @@ const showPopup = (data) => {
         currentNoteId = dt.noteId;
 }
 
+// Xóa bỏ hành vi mặt định của thẻ a có id là add
+document.getElementById('add').addEventListener('click', (event) => {
+    event.preventDefault();
+});
+
 const addNotePopup = () => {
     addNote.style.display = 'block';
     timeCreate.innerHTML = `${getDate().stringDate} &emsp; &emsp; ${getDate().time}`;
