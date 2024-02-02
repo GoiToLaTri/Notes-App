@@ -125,4 +125,38 @@ const getContentEdit = () => {
     editContent.value = formatEditData(data.contents);
 }
 
+// Tính năng search
+window.onload = () => {
+    // listItem.forEach((item) => console.log(item.textContent))
+    document.querySelector('#search').addEventListener('input', () => {
+        const searchInput = document.querySelector('#search');
+        const filter = searchInput.value.toLowerCase();
+        const listItem = document.querySelectorAll('.note');
+        listItem.forEach((item) => {
+            let text = item.textContent;
+            if (text.toLowerCase().includes(filter.toLowerCase())) {
+                item.style.display = '';
+            }
+            else
+                item.style.display = 'none';
+        });
+
+    });
+}
+
+// document.querySelector('#search').addEventListener('input', () => {
+//     const searchInput = document.querySelector('#search');
+//     const filter = searchInput.value.toLowerCase();
+
+//     listItem.forEach((item) => {
+//         let text = item.innerText;
+//         if (text.toLowerCase.includes(filter.toLowerCase())) {
+//             item.style.display = '';
+//         }
+//         else
+//             item.style.display = 'none';
+//     });
+
+// });
+
 createNoteCard();
