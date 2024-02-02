@@ -36,7 +36,6 @@ const setNote = () => {
     const note = {
         noteTitle: noteTitle.innerText,
         contents: contents.value.replace(/\n/g, "<br>"),
-        // formattedValue,
         id: createId(),
         date: getDate(),
     }

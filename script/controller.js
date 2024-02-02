@@ -170,10 +170,8 @@ const editNote = document.getElementById('editNote');
 
 const btnEdit = () => {
     btnClose();
-    // overlay.style.display = 'block';
     editNote.style.display = 'block';
     getContentEdit();
-    // console.log('Hello');
 }
 
 const btnEditClose = () => {
@@ -185,18 +183,11 @@ const btnSave = () => {
     const dataId = localStorage.getItem('currentNote');
     const eContent = editNoteTitle.innerText.trim();
     const gNoteTitle = JSON.parse(localStorage.getItem(dataId)).noteTitle.trim();
-    // console.log(JSON.parse(localStorage.getItem(dataId)).noteTitle.trim() === eContent);
-    console.log(eContent);
     if (eContent === '') {
         overlay.style.display = 'block';
         errTitle.style.display = 'block';
         return null;
     }
-    // if (listNotes.has(eContent)) {
-    //     overlay.style.display = 'block';
-    //     errBox.style.display = 'block';
-    //     return null;
-    // }
 
     const listTitle = [];
 
