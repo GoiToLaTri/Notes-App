@@ -127,7 +127,6 @@ const getContentEdit = () => {
 
 // Tính năng search
 window.onload = () => {
-    // listItem.forEach((item) => console.log(item.textContent))
     document.querySelector('#search').addEventListener('input', () => {
         const searchInput = document.querySelector('#search');
         const filter = searchInput.value.toLowerCase();
@@ -143,20 +142,5 @@ window.onload = () => {
 
     });
 }
-
-// document.querySelector('#search').addEventListener('input', () => {
-//     const searchInput = document.querySelector('#search');
-//     const filter = searchInput.value.toLowerCase();
-
-//     listItem.forEach((item) => {
-//         let text = item.innerText;
-//         if (text.toLowerCase.includes(filter.toLowerCase())) {
-//             item.style.display = '';
-//         }
-//         else
-//             item.style.display = 'none';
-//     });
-
-// });
 
 createNoteCard();
