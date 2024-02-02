@@ -10,3 +10,4 @@
 - Còn 1 chức năng search.
 - Cập nhật tối ưu hóa giao diện lần 2.
 - Cập nhật tính năng search.
+- Fix một số lỗi liên quan đến chức năng edit
