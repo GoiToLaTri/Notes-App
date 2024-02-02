@@ -183,17 +183,32 @@ const btnEditClose = () => {
 
 const btnSave = () => {
     const dataId = localStorage.getItem('currentNote');
-    const eContent = editNoteTitle.innerText;
+    const eContent = editNoteTitle.innerText.trim();
+    const gNoteTitle = JSON.parse(localStorage.getItem(dataId)).noteTitle.trim();
+    // console.log(JSON.parse(localStorage.getItem(dataId)).noteTitle.trim() === eContent);
+    console.log(eContent);
     if (eContent === '') {
         overlay.style.display = 'block';
         errTitle.style.display = 'block';
         return null;
     }
-    if (listNotes.has(eContent)) {
+    // if (listNotes.has(eContent)) {
+    //     overlay.style.display = 'block';
+    //     errBox.style.display = 'block';
+    //     return null;
+    // }
+
+    const listTitle = [];
+
+    for (const noteTitle of listNotes.keys())
+        listTitle.push(noteTitle);
+
+    if (listTitle.some(note => note !== gNoteTitle && note === eContent)) {
         overlay.style.display = 'block';
         errBox.style.display = 'block';
         return null;
     }
+
     const note = {
         noteTitle: editNoteTitle.innerText,
         contents: editContent.value.replace(/\n/g, "<br>"),
@@ -204,5 +219,4 @@ const btnSave = () => {
     const data = JSON.stringify(note);
     localStorage.setItem(dataId, data);
     location.reload();
-
 }
